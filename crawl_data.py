@@ -33,7 +33,7 @@ def convert_tweet(d):
 class StdOutListener(StreamListener):
     def __init__(self, mongo_col):
         self.collection = pymongo.MongoClient()[DB][mongo_col]
-        self.collection.remove()
+        # self.collection.remove()
         
     def on_data(self, raw_data):
         try:
@@ -69,4 +69,8 @@ if __name__ == '__main__':
     if args.terms:
         stream.filter(track=args.terms)
     else:
-        stream.sample()
+        while True:
+            try:
+                stream.sample()
+            except:
+                pass
