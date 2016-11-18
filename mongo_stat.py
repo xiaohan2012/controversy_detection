@@ -2,7 +2,7 @@ import pymongo
 from collections import Counter
 
 DB = 'controversy'
-mongo_col = 'test'
+mongo_col = 'nov16'
 col = pymongo.MongoClient()[DB][mongo_col]
 
 print('#retweets {}'.format(col.find().count()))

@@ -82,3 +82,5 @@ keys.txt
 venv
 
 external
+
+.ipynb_checkpoints
