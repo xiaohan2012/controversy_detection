@@ -80,3 +80,5 @@ test/data/given_topics/meta-graph*.pkl
 
 keys.txt
 venv
+
+external
