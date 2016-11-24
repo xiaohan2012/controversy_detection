@@ -15,7 +15,16 @@ Use `twitter_stream_data.py` to extract the retweets from raw data.
 - star: 5e4, 0.0014
 - Barabasi: 5e4, 0.0056
 
-Notes:
+
+- ALDUB1stAnniversary: 0.04 (non-controversial)
+
+## Interesting tags
+
+- MTVHottest: 0.12, 4 clusters (seems to be controversial)
+- PokemonGO: seems to be non-controversial but receices score 0.13, plus the retweet graph is like two stars connected by one edge.
+
+
+## Notes
 
 - the number of high degree nodes should be proportional to the network size: the above experient chose 1e-3
 - there is not explicit bound on the score
