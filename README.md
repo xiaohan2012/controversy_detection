@@ -1,4 +1,5 @@
 # Controversy Detection in Twitter Stream
+
 ## Data preparation
 
 All retweets from 2016 July.
@@ -31,5 +32,5 @@ Notes:
    - pagerank can deal with that
 2. hashtag may contain opinion bias such as NoDAPL (protest against oil pipeline)
 3. At the begining, controversial hashtag may induce many disconnected components, how to deal with this?
-   - A more fundamental question is, hoes do the graph on controversy-hashtag evolve?
+   - A more fundamental question is, how does the graph on controversy-hashtag evolve?
 4. Ask for ground truth data, in one of the papers in "Related Work".
