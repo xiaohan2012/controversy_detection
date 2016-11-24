@@ -24,6 +24,19 @@ Use `twitter_stream_data.py` to extract the retweets from raw data.
 - PokemonGO: seems to be non-controversial but receices score 0.13, plus the retweet graph is like two stars connected by one edge.
 
 
+## RWC evolution
+
+See `figs/{dataset}-volume.png` and `figs/{dataset}-rwc-vs-time.png`.
+
+For beefban, ukraine:
+
+1. The RWC score is high at the begining.
+2. For beefban, the controversy score seems to go together with the temporal volume, but there are some minor trend differences
+3. For ukraine, the above observation is not very obvious.
+
+For MTVHottest, the volume and RWC score doesn't match in shape.
+For RWC score, it increases while the volume graph is not very regular. 
+
 ## Notes
 
 - the number of high degree nodes should be proportional to the network size: the above experient chose 1e-3

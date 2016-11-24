@@ -32,11 +32,14 @@ def populate_r_and_c(g, pr, target_nodes, k):
 
 def controversy_score(g, top_percent=0.001):
     """consider only two sides only
-    top_percent: percentage of high degree nodes to consider for the c vector 
+    top_percent: percentage of high degree nodes to consider for the c vector
     """
     k = int(g.number_of_nodes() * top_percent)
-    assert k > 0
-    print('k={}'.format(k))
+    if k == 0:
+        raise ValueError('only contains {} nodes, does not work for percent {}'.format(
+            g.number_of_nodes(), top_percent))
+        
+
     cuts, parts = metis.part_graph(g)
     aux = lambda p, target: int(target == p)
     
