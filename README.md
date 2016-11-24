@@ -1,4 +1,9 @@
 # Controversy Detection in Twitter Stream
+## Data preparation
+
+All retweets from 2016 July.
+
+Use `twitter_stream_data.py` to extract the retweets from raw data.
 
 ## Controversy score checking
 
