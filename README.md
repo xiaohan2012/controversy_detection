@@ -18,6 +18,21 @@ Use `twitter_stream_data.py` to extract the retweets from raw data.
 
 - ALDUB1stAnniversary: 0.04 (non-controversial)
 
+## Normalizing RWC to [0.5, 1.0]
+
+This is done by `controversy  / (controversy + non_controversy)`.
+
+And some comparison on the example networks:
+
+- barbell: 0.9942951520693315
+- beefban: 0.8838806129369029
+- ukraine: 0.8791934195724288
+- **circular**: 0.8596169409366637 (this is very unexpected!)
+- baltimore: 0.8172103276545415
+- barabasi: 0.5599275837061325
+- star: 0.5003170710418742
+
+
 ## Interesting tags
 
 - MTVHottest: 0.12, 4 clusters (seems to be controversial)
