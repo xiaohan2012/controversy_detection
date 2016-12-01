@@ -52,22 +52,45 @@ For beefban, ukraine:
 For MTVHottest, the volume and RWC score doesn't match in shape.
 For RWC score, it increases while the volume graph is not very regular. 
 
-## Notes
-
-- the number of high degree nodes should be proportional to the network size: the above experient chose 1e-3
-- there is not explicit bound on the score
-
 ## Installing metis
 
 1. Install [metis wrapper](http://metis.readthedocs.io/en/latest/)
 2. Install [Metis](http://glaros.dtc.umn.edu/gkhome/metis/metis/download)
 3. Important: `make config static=1`
 
-## Issues
+
+## Dynamic graph partitioning
+
+Check out `dynamic_graph_partitioning.ipynb` for the code and evaluation.
+
+TODO:
+
+1. node skipping is not implemented yet
+2. pure python impelementation is slower compared to metis, which is in C++.
+
+
+## Todo
+
+1. Incremental controversy score update and evaluation
+  - when new edges are added or old edges are removed,
+  - incrementally partition the graph and incrementally update the controversy score
+  - compare the score and running time with calculating the score from scratch
+2. How does Kiran's paper evaluate the score?
+
+
+## Issues (and solution)
+
+The following issues are encountered, some are solved while some remain open:
+
 
 1. how to apply Kiran's method on top this dataset espesially when there are many disconnected components?
    - pagerank can deal with that
+2. issue on the controversy score definition:
+   - the number of high degree nodes should be proportional to the network size: the above experient chose 1e-3
+   - there is not explicit bound on the score
+   - solution: takes k percent nodes and use division to bound the score.
+   
 2. hashtag may contain opinion bias such as NoDAPL (protest against oil pipeline)
 3. At the begining, controversial hashtag may induce many disconnected components, how to deal with this?
    - A more fundamental question is, how does the graph on controversy-hashtag evolve?
-4. Ask for ground truth data, in one of the papers in "Related Work".
+
