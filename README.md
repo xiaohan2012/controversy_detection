@@ -12,7 +12,7 @@
    - evaluate the tradeoff between cut objective and computation time
    - optimize the graph partitioning code (profiling even cython)
 4. Find a way to summarize the controversial hashtag. For example, what are the typical opnions/tweets of the opposing sides/communities?
-
+5. Can we have some ground truth of which tags are controversial (so that we can have precision/recall/F1)?
 
 ## Data preparation
 
