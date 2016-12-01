@@ -1,18 +1,33 @@
 # Controversy Detection in Twitter Stream
 
+## Done
+
+- controversy score calculation: `controversy_score.ipynb`
+- dynamic graph partitioning: `dynamic_graph_partitioning.ipynb`
+
 ## Todo
+
+These are must-do:
 
 1. Incremental controversy score update and evaluation
   - when new edges are added or old edges are removed,
   - incrementally partition the graph and incrementally update the controversy score
-  - compare the score and running time (solely pagerank and partition+pagerank) with calculating the score from scratch
-2. How does Kiran's paper evaluate the score?
-3. Incremental graph partitioning:
+  - compare the score and running time (1. pagerank, 2. partition+pagerank) with calculating the score from scratch
+2. Top-k hashtag selection algorithm
+3. Try the method on real twitter stream on different parameters (time window, minimum controversy score, etc)
+  - see how the controversy score changes, does it make sense?
+  - are controversial hashtags detected?
+
+
+These are optional:
+
+1. Incremental graph partitioning:
    - add node skipping in incremental graph partitioning
    - evaluate the tradeoff between cut objective and computation time
    - optimize the graph partitioning code (profiling even cython)
-4. Find a way to summarize the controversial hashtag. For example, what are the typical opnions/tweets of the opposing sides/communities?
-5. Can we have some ground truth of which tags are controversial (so that we can have precision/recall/F1)?
+2. Find a way to summarize the controversial hashtag. For example, what are the typical opnions/tweets of the opposing sides/communities?
+   - one goal is: by checking the summarization, one can decide whether this hashtag is controversial or not.
+5. Label ground truth on which tags are controversial (so that we can have precision/recall/F1)?
 
 ## Data preparation
 
