@@ -1,5 +1,19 @@
 # Controversy Detection in Twitter Stream
 
+## Todo
+
+1. Incremental controversy score update and evaluation
+  - when new edges are added or old edges are removed,
+  - incrementally partition the graph and incrementally update the controversy score
+  - compare the score and running time (solely pagerank and partition+pagerank) with calculating the score from scratch
+2. How does Kiran's paper evaluate the score?
+3. Incremental graph partitioning:
+   - add node skipping in incremental graph partitioning
+   - evaluate the tradeoff between cut objective and computation time
+   - optimize the graph partitioning code (profiling even cython)
+4. Find a way to summarize the controversial hashtag. For example, what are the typical opnions/tweets of the opposing sides/communities?
+
+
 ## Data preparation
 
 All retweets from 2016 July.
@@ -67,15 +81,6 @@ TODO:
 
 1. node skipping is not implemented yet
 2. pure python impelementation is slower compared to metis, which is in C++.
-
-
-## Todo
-
-1. Incremental controversy score update and evaluation
-  - when new edges are added or old edges are removed,
-  - incrementally partition the graph and incrementally update the controversy score
-  - compare the score and running time with calculating the score from scratch
-2. How does Kiran's paper evaluate the score?
 
 
 ## Issues (and solution)
