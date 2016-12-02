@@ -4,15 +4,16 @@
 
 - controversy score calculation: `controversy_score.ipynb`
 - dynamic graph partitioning: `dynamic_graph_partitioning.ipynb`
+- Incremental controversy score update and evaluation
+  - when new edges are added or old edges are removed,
+  - incrementally partition the graph and incrementally update the controversy score
+  - compare the score and running time with calculating the score from scratch
+
 
 ## Todo
 
 These are must-do:
 
-1. Incremental controversy score update and evaluation
-  - when new edges are added or old edges are removed,
-  - incrementally partition the graph and incrementally update the controversy score
-  - compare the score and running time (1. pagerank, 2. partition+pagerank) with calculating the score from scratch
 2. Top-k hashtag selection algorithm
 3. Try the method on real twitter stream on different parameters (time window, minimum controversy score, etc)
   - see how the controversy score changes, does it make sense?
