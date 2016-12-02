@@ -6,12 +6,14 @@ from collections import Counter
 
 def populate_r_and_c(g, pr, target_nodes, k):
     """
+    populate data to vectors
+
     g: graph
     pr: pagerank scores (dict)
     targetr_nodes: list of nodes to consider
     k: number of highest degree nodes to take
     
-    return:
+    return: two vectors
     r: page rank score
     c: node importance on target_nodes in terms of
     """
@@ -38,7 +40,6 @@ def controversy_score(g, top_percent=0.001):
     if k == 0:
         raise ValueError('only contains {} nodes, does not work for percent {}'.format(
             g.number_of_nodes(), top_percent))
-        
 
     cuts, parts = metis.part_graph(g)
     aux = lambda p, target: int(target == p)

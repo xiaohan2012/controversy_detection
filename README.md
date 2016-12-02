@@ -97,6 +97,18 @@ TODO:
 1. node skipping is not implemented yet
 2. pure python impelementation is slower compared to metis, which is in C++.
 
+## Incremental controversy score update
+
+Check out `incremental_controversy_score.ipynb`.
+
+Some quick result (add/remove 10% of the edges):
+
+1. average running time reduction is 18%
+2. the Pearson correlation coefficient of RWC scores is: 0.994445283425 with p-value 4.26692170169e-07.
+
+TODO:
+
+1. what if fewer edges are added/removed?
 
 ## Issues (and solution)
 
