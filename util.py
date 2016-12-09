@@ -26,16 +26,17 @@ def sample_edges_to_add(g, n_edges_to_add):
 
 
 class tw_list():
-    """time-windowed list
-    """
-    def __init__(self, data=[], timestamps=[]):
-        assert len(data) == len(timestamps)
+    def __init__(self, data=None, timestamps=None):
+        if data is None or timestamps is None:
+            data = []
+            timestamps = []
+        assert len(data) == len(timestamps)            
         self.data = data
         self.ts = timestamps
         
     def remove_before_time(self, t):
         i = 0
-        while self.ts[i] < t:
+        while i < len(self.ts) and self.ts[i] < t:
             i += 1
         self.ts = self.ts[i:]
         self.data = self.data[i:]
