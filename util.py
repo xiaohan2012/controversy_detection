@@ -35,7 +35,7 @@ class tw_list():
         
     def remove_before_time(self, t):
         i = 0
-        while self.ts[i] <= t:
+        while self.ts[i] < t:
             i += 1
         self.ts = self.ts[i:]
         self.data = self.data[i:]
