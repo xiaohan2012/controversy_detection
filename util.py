@@ -23,3 +23,27 @@ def sample_edges_to_add(g, n_edges_to_add):
                 break
         n += 1
     return edges_to_add
+
+
+class tw_list():
+    """time-windowed list
+    """
+    def __init__(self, data=[], timestamps=[]):
+        assert len(data) == len(timestamps)
+        self.data = data
+        self.ts = timestamps
+        
+    def remove_before_time(self, t):
+        i = 0
+        while self.ts[i] <= t:
+            i += 1
+        self.ts = self.ts[i:]
+        self.data = self.data[i:]
+        
+    def append(self, e, t):
+        self.data.append(e)
+        self.ts.append(t)
+        
+    def __repr__(self):
+        return ', '.join(map(lambda t: '{0}({1})'.format(t[0], t[1]),
+                             zip(self.data, self.ts)))
