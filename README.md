@@ -8,16 +8,17 @@
   - when new edges are added or old edges are removed,
   - incrementally partition the graph and incrementally update the controversy score
   - compare the score and running time with calculating the score from scratch
-
+- The skeleton code for simulation on twitter stream
 
 ## Todo
 
 These are must-do:
 
-2. Top-k hashtag selection algorithm
-3. Try the method on real twitter stream on different parameters (time window, minimum controversy score, etc)
-  - see how the controversy score changes, does it make sense?
-  - are controversial hashtags detected?
+1. Comparing through-put for both incremental (IC) approach and from-scratch (FS) approach
+2. Comparing controversy score of IC approach and FS approach
+3. Periodical update improvement: track `last_updated_time` for each hashtag
+4. Integrate top-k hashtag selection algorithm
+
 
 
 These are optional:
