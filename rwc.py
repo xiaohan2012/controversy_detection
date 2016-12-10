@@ -1,5 +1,4 @@
 import networkx as nx
-import metis
 import numpy as np
 from collections import Counter
 
@@ -32,26 +31,38 @@ def populate_r_and_c(g, pr, target_nodes, k):
     return r, c
 
 
-def controversy_score(g, top_percent=0.001):
-    """consider only two sides only
-    top_percent: percentage of high degree nodes to consider for the c vector
+def controversy_score(g, parts, top_percent=0.001, nstart0=None, nstart1=None):
+    """consider only two sides only                               
+    
+    parts: list of cluster ids, the partitioning information, 
+    
+    top_percent: percentage of high degree nodes to consider for the c vector           
+    
+    nstart1, nstart2: the nstart parameter in networkx.pagerank for both sides
+        if None, then start from scratch
+        
+    returns:
+    
+    rwc_score
+    
+    aux_info: for example, pagerank for both sides
     """
     k = int(g.number_of_nodes() * top_percent)
     if k == 0:
         raise ValueError('only contains {} nodes, does not work for percent {}'.format(
             g.number_of_nodes(), top_percent))
 
-    cuts, parts = metis.part_graph(g)
+    # cuts, parts = metis.part_graph(g)
     aux = lambda p, target: int(target == p)
-    
+
     # personalization vector
     part_sizes = Counter(parts)
     e_0 = {n: aux(p, 0) / part_sizes[0] for n, p in zip(g.nodes(), parts)}
     e_1 = {n: aux(p, 1) / part_sizes[1] for n, p in zip(g.nodes(), parts)}
-    
+
     # pagerank scores
-    pr0 = nx.pagerank(g, alpha=0.85, personalization=e_0, dangling=e_0, max_iter=10000)
-    pr1 = nx.pagerank(g, alpha=0.85, personalization=e_1, dangling=e_1, max_iter=10000)
+    pr0 = nx.pagerank(g, alpha=0.85, personalization=e_0, dangling=e_0, max_iter=10000, nstart=nstart0)
+    pr1 = nx.pagerank(g, alpha=0.85, personalization=e_1, dangling=e_1, max_iter=10000, nstart=nstart1)
 
     # nodes at two sides
     nodes0 = [n for n, p in zip(g.nodes(), parts) if p == 0]
@@ -67,10 +78,14 @@ def controversy_score(g, top_percent=0.001):
     for i, r in enumerate(r_list):
         for j, c in enumerate(c_list):
             prod = np.sum(r * c)
-            # print(prod, prod * part_sizes[i])
+            # print(prod, prod * part_sizes[i])    
             if i == j:
                 rwc += (prod * part_sizes[i])
             else:
                 rwc -= (prod * part_sizes[i])
     rwc /= sum(part_sizes.values())
-    return rwc
+    aux_info = {
+        'pr0': pr0,
+        'pr1': pr1
+    }
+    return rwc, aux_info
