@@ -73,17 +73,17 @@ def controversy_score(g, parts, top_percent=0.001, nstart0=None, nstart1=None):
 
     r_list = [r0, r1]
     c_list = [c0, c1]
-    rwc = 0
+    rwc0 = rwc1 = 0
     k = len(r_list)
     for i, r in enumerate(r_list):
         for j, c in enumerate(c_list):
             prod = np.sum(r * c)
             # print(prod, prod * part_sizes[i])    
             if i == j:
-                rwc += (prod * part_sizes[i])
+                rwc0 += (prod * part_sizes[i])
             else:
-                rwc -= (prod * part_sizes[i])
-    rwc /= sum(part_sizes.values())
+                rwc1 += (prod * part_sizes[i])
+    rwc = rwc0 / (rwc0 + rwc1)
     aux_info = {
         'pr0': pr0,
         'pr1': pr1
