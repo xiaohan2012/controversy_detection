@@ -1,6 +1,7 @@
 import random
 import string
 import networkx as nx
+from collections import defaultdict
 
 
 def build_graph_from_df(df):
@@ -57,3 +58,19 @@ class tw_list():
     def __repr__(self):
         return ', '.join(map(lambda t: '{0}({1})'.format(t[0], t[1]),
                              zip(self.data, self.ts)))
+
+
+def get_cut_ratio(g, cluster_node_ids):
+    """support only 2 partitions currently
+    """
+    partition = defaultdict(set)
+    for n, c in zip(g.nodes_iter(), cluster_node_ids):
+        partition[c].add(n)
+        
+    c1, c2 = list(partition.values())
+    cuts = 0.0
+    for u, v in g.edges_iter():
+        if (u in c1 and v in c2) or (u in c2 and v in c1):
+            cuts += 1
+
+    return cuts / g.number_of_edges()
