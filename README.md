@@ -9,17 +9,16 @@
   - incrementally partition the graph and incrementally update the controversy score
   - compare the score and running time with calculating the score from scratch
 - The skeleton code for simulation on twitter stream
+- Comparing through-put for both incremental (IC) approach and from-scratch (FS) approach
+- Periodical update improvement: track `last_updated_time` for each hashtag
 
 ## Todo
 
 These are must-do:
 
-1. Comparing through-put for both incremental (IC) approach and from-scratch (FS) approach
+1. Manually check some top controversial events
 2. Comparing controversy score of IC approach and FS approach
-3. Periodical update improvement: track `last_updated_time` for each hashtag
 4. Integrate top-k hashtag selection algorithm
-
-
 
 These are optional:
 
@@ -111,6 +110,16 @@ Some quick result (add/remove 10% of the edges):
 TODO:
 
 1. what if fewer edges are added/removed?
+
+## Throughput test
+
+Refer to `simulation.ipynb`.
+
+
+1e5 retweets, 60 mins time window, 5 mins update interval
+
+- Incremental: 216 seconds
+- From scracth: 422 seconds
 
 ## Issues (and solution)
 
