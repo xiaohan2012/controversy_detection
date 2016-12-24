@@ -121,6 +121,16 @@ Refer to `simulation.ipynb`.
 - Incremental: 216 seconds
 - From scracth: 422 seconds
 
+## Correlation of RWCs between IC approach and FS approach
+
+Averaged over RWC scores over multiple updates on multiple graphs.
+
+Average: 0.9, not as high as the previous result (0.99) averaged over multiple graphs but only one update each.
+
+I guess: incremental graph partition accumulates errors.
+
+Check `simulation.ipynb`
+
 ## Issues (and solution)
 
 The following issues are encountered, some are solved while some remain open:
