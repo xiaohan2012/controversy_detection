@@ -129,6 +129,8 @@ Average: 0.9, not as high as the previous result (0.99) averaged over multiple g
 
 I guess: incremental graph partition accumulates errors.
 
+Plotted RWC score evoluation for \#VeranoMTV2016.
+
 Check `simulation.ipynb`
 
 ## Issues (and solution)
