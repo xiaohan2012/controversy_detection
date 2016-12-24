@@ -11,14 +11,14 @@
 - The skeleton code for simulation on twitter stream
 - Comparing through-put for both incremental (IC) approach and from-scratch (FS) approach
 - Periodical update improvement: track `last_updated_time` for each hashtag
+- Comparing controversy score of IC approach and FS approach
 
 ## Todo
 
 These are must-do:
 
 1. Manually check some top controversial events
-2. Comparing controversy score of IC approach and FS approach
-4. Integrate top-k hashtag selection algorithm
+2. Integrate top-k hashtag selection algorithm
 
 These are optional:
 
