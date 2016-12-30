@@ -133,6 +133,10 @@ Plotted RWC score evoluation for \#VeranoMTV2016.
 
 Check `simulation.ipynb`
 
+## Stream volume graph of top events
+
+Check `simulations.ipynb` out.
+
 ## Issues (and solution)
 
 The following issues are encountered, some are solved while some remain open:
