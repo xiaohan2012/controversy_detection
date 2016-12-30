@@ -38,7 +38,7 @@ class tw_list():
         if data is None or timestamps is None:
             data = []
             timestamps = []
-        assert len(data) == len(timestamps)            
+        assert len(data) == len(timestamps)
         self.data = data
         self.ts = timestamps
         
@@ -74,3 +74,23 @@ def get_cut_ratio(g, cluster_node_ids):
             cuts += 1
 
     return cuts / g.number_of_edges()
+
+
+def add_edges(g, edges):
+    """the same edges can be added multiple times"""
+    for i, j in edges:
+        if g.has_edge(i, j):
+            g[i][j]['count'] += 1
+        else:
+            g.add_edge(i, j, count=1)
+    return g
+
+
+def remove_edges(g, edges):
+    """the same edges can be removed multiple times. 
+    It will be really removed if the count drops to 0"""
+    for i, j in edges:
+        g[i][j]['count'] -= 1
+        if g[i][j]['count'] == 0:
+            g.remove_edge(i, j)
+    return g

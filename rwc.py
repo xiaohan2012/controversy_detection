@@ -31,12 +31,12 @@ def populate_r_and_c(g, pr, target_nodes, k):
     return r, c
 
 
-def controversy_score(g, parts, top_percent=0.001, nstart0=None, nstart1=None):
+def controversy_score(g, node2cluster, top_percent=0.001, nstart0=None, nstart1=None):
     """consider only two sides only                               
     
-    parts: list of cluster ids, the partitioning information, 
+    node2cluster: node to cluster id dict
     
-    top_percent: percentage of high degree nodes to consider for the c vector           
+    top_percent: percentage of high degree nodes to consider for the c vector
     
     nstart1, nstart2: the nstart parameter in networkx.pagerank for both sides
         if None, then start from scratch
@@ -52,21 +52,21 @@ def controversy_score(g, parts, top_percent=0.001, nstart0=None, nstart1=None):
         raise ValueError('only contains {} nodes, does not work for percent {}'.format(
             g.number_of_nodes(), top_percent))
 
-    # cuts, parts = metis.part_graph(g)
+    # cuts, node2cluster = metis.part_graph(g)
     aux = lambda p, target: int(target == p)
 
     # personalization vector
-    part_sizes = Counter(parts)
-    e_0 = {n: aux(p, 0) / part_sizes[0] for n, p in zip(g.nodes(), parts)}
-    e_1 = {n: aux(p, 1) / part_sizes[1] for n, p in zip(g.nodes(), parts)}
+    part_sizes = Counter(node2cluster.values())
+    e_0 = {n: aux(p, 0) / part_sizes[0] for n, p in node2cluster.items()}
+    e_1 = {n: aux(p, 1) / part_sizes[1] for n, p in node2cluster.items()}
 
     # pagerank scores
     pr0 = nx.pagerank(g, alpha=0.85, personalization=e_0, dangling=e_0, max_iter=10000, nstart=nstart0)
     pr1 = nx.pagerank(g, alpha=0.85, personalization=e_1, dangling=e_1, max_iter=10000, nstart=nstart1)
 
     # nodes at two sides
-    nodes0 = [n for n, p in zip(g.nodes(), parts) if p == 0]
-    nodes1 = [n for n, p in zip(g.nodes(), parts) if p == 1]
+    nodes0 = [n for n, p in node2cluster.items() if p == 0]
+    nodes1 = [n for n, p in node2cluster.items() if p == 1]
 
     r0, c0 = populate_r_and_c(g, pr0, nodes0, k)
     r1, c1 = populate_r_and_c(g, pr1, nodes1, k)
