@@ -12,13 +12,15 @@
 - Comparing through-put for both incremental (IC) approach and from-scratch (FS) approach
 - Periodical update improvement: track `last_updated_time` for each hashtag
 - Comparing controversy score of IC approach and FS approach
+- Integrate top-k hashtag selection algorithm
+
 
 ## Todo
 
 These are must-do:
 
 1. Manually check some top controversial events
-2. Integrate top-k hashtag selection algorithm
+
 
 These are optional:
 
