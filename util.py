@@ -100,3 +100,8 @@ def get_largest_connected_subgraph(g):
     ccs = nx.connected_components(g)
     nodes = max(ccs, key=len)
     return g.subgraph(nodes)
+
+
+def largest_cc_size(g):
+    ccs = nx.connected_components(g)
+    return max(map(len, ccs))

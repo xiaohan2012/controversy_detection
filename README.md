@@ -13,7 +13,7 @@
 - Periodical update improvement: track `last_updated_time` for each hashtag
 - Comparing controversy score of IC approach and FS approach
 - Integrate top-k hashtag selection algorithm
-
+- Fixed RWC computation error: 1) works on largest CC 2) thresholding RWC computation by largest CC size (not graph size)
 
 ## Todo
 
@@ -30,7 +30,7 @@ These are optional:
    - optimize the graph partitioning code (profiling even cython)
 2. Find a way to summarize the controversial hashtag. For example, what are the typical opnions/tweets of the opposing sides/communities?
    - one goal is: by checking the summarization, one can decide whether this hashtag is controversial or not.
-5. Label ground truth on which tags are controversial (so that we can have precision/recall/F1)?
+3. Label ground truth on which tags are controversial (so that we can have precision/recall/F1)?
 
 ## Data preparation
 
@@ -158,5 +158,12 @@ The following issues are encountered, some are solved while some remain open:
 4. How to make RWC more robust?
    - varying number of partitionings
    - scattered CCs
+   - the largest CC size should be big enough
+   - for small graphs, like a retweet tree, this method does not work very well.
+5. Computing largest CC
+   - now is from-scratch
+   - should make it incremental
+6. RWC does not perform that well
+   - maybe minimum RWC score needs to be tuned. That's a pain.
 
 
