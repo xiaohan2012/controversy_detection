@@ -94,3 +94,9 @@ def remove_edges(g, edges):
         if g[i][j]['count'] == 0:
             g.remove_edge(i, j)
     return g
+
+
+def get_largest_connected_subgraph(g):
+    ccs = nx.connected_components(g)
+    nodes = max(ccs, key=len)
+    return g.subgraph(nodes)

@@ -154,4 +154,9 @@ The following issues are encountered, some are solved while some remain open:
 2. hashtag may contain opinion bias such as NoDAPL (protest against oil pipeline)
 3. At the begining, controversial hashtag may induce many disconnected components, how to deal with this?
    - A more fundamental question is, how does the graph on controversy-hashtag evolve?
+   - I take the largest CC and compute RWC based on it.
+4. How to make RWC more robust?
+   - varying number of partitionings
+   - scattered CCs
+
 
