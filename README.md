@@ -139,6 +139,12 @@ Check `simulation.ipynb`
 
 Check `simulations.ipynb` out.
 
+
+## evaluating hashtag
+
+Check `manually_check_hashtag.ipynb`
+
+
 ## Issues (and solution)
 
 The following issues are encountered, some are solved while some remain open:
