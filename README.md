@@ -1,4 +1,21 @@
+
 # Controversy Detection in Twitter Stream
+
+## Usage:
+
+### Setting up environtment
+
+- prepare virtual environment: `virtualenv -p pyton3 venv`
+- `source venv/bin/activate`
+- install software dependencies: `pip install -r requirements.txt`
+- running Notebook: `ipython notebook `
+
+### Running experiments
+
+All experiments are written in the Notebook scripts with extension ".ipynb"
+
+- Section 5.2: `dynamic_graph_partitioning.ipynb`
+- Section 5.3: `simulation.ipynb`
 
 ## Done
 
