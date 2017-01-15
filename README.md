@@ -5,7 +5,7 @@
 
 ### Setting up environtment
 
-- prepare virtual environment: `virtualenv -p pyton3 venv`
+- prepare virtual environment: `virtualenv -p python3 venv`
 - `source venv/bin/activate`
 - install software dependencies: `pip install -r requirements.txt`
 - running Notebook: `ipython notebook `
