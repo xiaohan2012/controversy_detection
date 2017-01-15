@@ -17,6 +17,9 @@ All experiments are written in the Notebook scripts with extension ".ipynb"
 - Section 5.2: `dynamic_graph_partitioning.ipynb`
 - Section 5.3: `simulation.ipynb`
 
+
+----------------------
+
 ## Done
 
 - controversy score calculation: `controversy_score.ipynb`
